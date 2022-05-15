@@ -1,52 +1,32 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-	<div class="container-fluid">
-		<a class="navbar-brand" href="{{ path('main') }}">Stage Finder</a>
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-				<li class="nav-item">
-					<a class="nav-link active" aria-current="page" href="{{ path('main') }}">Accueil</a>
-				</li>
-				{% if app.user %}
+  <!-- Navbar Start -->
+        <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+            <a href="index.html" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
+                <h1 class="m-0 text-primary">JobFinder</h1>
+            </a>
+            <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto p-4 p-lg-0">
+                    <a href="{{  path('app_stage_finder') }}" class="nav-item nav-link active">Home</a>
+                    <a href="{{  path('about') }}" class="nav-item nav-link">About</a>
+                   
+                        <a href="{{  path('stages') }}" class="nav-item nav-link" >Internships</a>
+                       
+                    
+                    
+                        <a href="{{  path('testemonials') }}" class="nav-item nav-link" >Testemonials</a>
+                        
+                       
+                    
+                   
+                </div>
 				{% if app.user.category == '0' %}
-				<li class="nav-item">
-					<a class="nav-link" href="{{ path('offreEmp') }}">Offres</a>
-				</li>
-				{% endif %}
+                <a href="{{  path('OFFRES_entreprises') }}" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Dashboard<i class="fa fa-arrow-right ms-3"></i></a>
+                {% endif %}
 				{% if app.user.category == '1' %}
-				<li class="nav-item">
-					<a class="nav-link" href="{{  path('postuler_postuler') }}">Postuler</a>
-				</li>
-				{% endif %}
-				
-			
-				
-			</ul>
-			<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-				
-				{% if app.user.category == '0' %}
-			<li class="nav-item">
-                        <a class="nav-link" href="{{ path('admin_users_index') }}">Dashboard</a>
-                    </li>
-				{% endif %}
-					
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('profile_index') }}">Mon compte</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_logout') }}">Me déconnecter</a>
-                    </li>
-                {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_register') }}">M'inscrire</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_login') }}">Me Connecter</a>
-                    </li>
-				{% endif %}
-			</ul>
-		</div>
-	</div>
-</nav>
+                <a href="" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">check jobs<i class="fa fa-arrow-right ms-3"></i></a>
+                {% endif %}
+			</div>
+        </nav>
+        <!-- Navbar End -->

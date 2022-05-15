@@ -3,36 +3,45 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>{% block title %}Accueil{% endblock %} - Trouvez les offres des stages </title>
-		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		{% block stylesheets %}
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icon Font Stylesheet -->
+   
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+     <link rel="stylesheet" href="{{ asset('lib/animate/animate.min.css')}}" >
+    <link rel="stylesheet" href="{{ asset("lib/owlcarousel/assets/owl.carousel.min.css")}}" >
 
-		<!-- Feuilles de styles -->
-		<link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
-        {% block stylesheets %}{% endblock %}
-		<link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+    <!-- Customized Bootstrap Stylesheet -->
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}" >
 
-		<!-- Fichiers JS -->
-		<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}" defer></script>
-		{% block javascripts %}{% endblock %}
-		<script src="{{ asset('assets/js/scripts.js') }}" defer></script>
+   
+    <link rel="stylesheet" href="{{ asset('css/style.css')}}" >
+{% endblock stylesheets %}
 	</head>
 	<body>
         {% include "_partials/_nav.html.twig" %}
         
 		{% if app.user == false %}
-			<div class="alert alert-warning alert-dismissible" role="alert">
-				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-				<div class="alert-message">
-					<strong>Votre compte n'est pas activé</strong>
-				</div>
-			</div>
+			
 		{% endif %}
 
 		{% include "_partials/_flash.html.twig" %}
 		
 		{% block body %}{% endblock %}
 
-       
+       {% block javascripts %}
+           <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+           <script src="{{ asset('assets/lib/wow/wow.min.js')}}"></script>
+           <script src="{{ asset('assets/lib/easing/easing.min.js')}}"></script>
+          <script src="{{ asset('assets/lib/waypoints/waypoints.min.js')}}"></script>
+          <script src="{{ asset('assets/lib/owlcarousel/owl.carousel.min.js')}}"></script>
+           <script src="{{ asset('assets/js/main.js')}}"></script>
+        {% endblock %}
 	</body>
 	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 	 {% include "_partials/_footer.html.twig" %}

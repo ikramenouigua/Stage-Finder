@@ -5,23 +5,18 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\OffresRepository;
 
-#[Route('/postuler', name: 'postuler_')]
+
 class PostulerController extends AbstractController
 {
-    #[Route('/', name: 'index')]
-    public function index(): Response
-    {
-        return $this->render('offres/index.html.twig', [
-            'controller_name' => 'Profil de l\'utilisateur',
-        ]);
-    }
+   
 
-    #[Route('/postuler', name: 'postuler')]
-    public function orders(): Response
+    #[Route('/OFFRES_entreprises', name: 'OFFRES_entreprises')]
+    public function orders(OffresRepository $offresRepository): Response
     {
         return $this->render('offres/index.html.twig', [
-            'controller_name' => 'Commandes de l\'utilisateur',
+            'offres' => $offresRepository->findBy([], ['id' => 'asc'])
         ]);
     }
 }
