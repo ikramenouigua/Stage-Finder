@@ -9,18 +9,28 @@
 				<li class="nav-item">
 					<a class="nav-link active" aria-current="page" href="{{ path('main') }}">Accueil</a>
 				</li>
+				{% if app.user %}
+				{% if app.user.category == '0' %}
 				<li class="nav-item">
-					<a class="nav-link" href="{{  path('profile_orders') }}">Offres</a>
+					<a class="nav-link" href="{{ path('offreEmp') }}">Offres</a>
 				</li>
+				{% endif %}
+				{% if app.user.category == '1' %}
+				<li class="nav-item">
+					<a class="nav-link" href="{{  path('postuler_postuler') }}">Postuler</a>
+				</li>
+				{% endif %}
 				
 			
 				
 			</ul>
 			<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+				
+				{% if app.user.category == '0' %}
 			<li class="nav-item">
                         <a class="nav-link" href="{{ path('admin_users_index') }}">Dashboard</a>
                     </li>
-				{% if app.user %}
+				{% endif %}
 					
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('profile_index') }}">Mon compte</a>

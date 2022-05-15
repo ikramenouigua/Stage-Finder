@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+
+
+{% block title %}Lancer un offre{% endblock %}
+
+{% block body %}
+    <section class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Ajout Offre</h1>
+                {% if ajoutForm is defined %}
+                {{ form_start(ajoutForm) }}
+                 <fieldset class="mb-3">
+                        {{ form_row(ajoutForm.name) }}
+                    </fieldset>
+
+                
+
+                    <button type="submit" class="btn btn-primary btn-lg my-3">M'inscrire</button>
+                   
+                     {{ form_end(ajoutForm) }} 
+                     {% endif %} 
+                           
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

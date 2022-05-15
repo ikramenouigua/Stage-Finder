@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Offres
 {
     use CreatedAtTrait;
-    use SlugTrait;
+    //use SlugTrait;
 
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -26,26 +26,30 @@ class Offres
     #[ORM\Column(type: 'text')]
     private $description;
 
-    #[ORM\Column(type: 'integer')]
-    private $price;
+    #[ORM\Column(type: 'text')]
+    private $duree;
 
     #[ORM\Column(type: 'integer')]
-    private $stock;
+    private $remuneration;
 
-    #[ORM\ManyToOne(targetEntity: Categories::class, inversedBy: 'offres')]
-    #[ORM\JoinColumn(nullable: false)]
-    private $categories;
+    #[ORM\Column(type: 'text')]
+    private $image;
 
-    #[ORM\OneToMany(mappedBy: 'offres', targetEntity: Images::class, orphanRemoval: true)]
-    private $images;
+    #[ORM\Column(type: 'text')]
+    private $ville;
 
-    #[ORM\OneToMany(mappedBy: 'offres', targetEntity: OrdersDetails::class)]
-    private $ordersDetails;
+    #[ORM\ManyToOne(targetEntity: Users::class)]
+    private $idE;
+
+
+   
+
+
+    
 
     public function __construct()
     {
         $this->images = new ArrayCollection();
-        $this->ordersDetails = new ArrayCollection();
         $this->created_at = new \DateTimeImmutable();
     }
 
@@ -78,99 +82,66 @@ class Offres
         return $this;
     }
 
-    public function getPrice(): ?int
+    public function getDuree(): ?int
     {
-        return $this->price;
+        return $this->duree;
     }
 
-    public function setPrice(int $price): self
+    public function setDuree(int $duree): self
     {
-        $this->price = $price;
+        $this->duree = $duree;
 
         return $this;
     }
 
-    public function getStock(): ?int
+    public function getRemuneration(): ?int
     {
-        return $this->stock;
+        return $this->remuneration;
     }
 
-    public function setStock(int $stock): self
+    public function setRemuneration(int $remuneration): self
     {
-        $this->stock = $stock;
+        $this->remuneration = $remuneration;
 
         return $this;
     }
 
-    public function getCategories(): ?Categories
+    public function getImage(): ?string
     {
-        return $this->categories;
+        return $this->image;
     }
 
-    public function setCategories(?Categories $categories): self
+    public function setImage(?string $image): self
     {
-        $this->categories = $categories;
+        $this->image = $image;
 
         return $this;
     }
 
-    /**
-     * @return Collection|Images[]
-     */
-    public function getImages(): Collection
+    public function getVille(): ?string
     {
-        return $this->images;
+        return $this->ville;
     }
 
-    public function addImage(Images $image): self
+    public function setVille(?string $ville): self
     {
-        if (!$this->images->contains($image)) {
-            $this->images[] = $image;
-            $image->setOffres($this);
-        }
+        $this->ville = $ville;
 
         return $this;
     }
 
-    public function removeImage(Images $image): self
+    public function getIdE(): ?user
     {
-        if ($this->images->removeElement($image)) {
-            // set the owning side to null (unless already changed)
-            if ($image->getOffres() === $this) {
-                $image->setOffres(null);
-            }
-        }
+        return $this->idE;
+    }
+
+    public function setIdE(?user $idE): self
+    {
+        $this->idE = $idE;
 
         return $this;
     }
 
-    /**
-     * @return Collection|OrdersDetails[]
-     */
-    public function getOrdersDetails(): Collection
-    {
-        return $this->ordersDetails;
-    }
-
-    public function addOrdersDetail(OrdersDetails $ordersDetail): self
-    {
-        if (!$this->ordersDetails->contains($ordersDetail)) {
-            $this->ordersDetails[] = $ordersDetail;
-            $ordersDetail->setOffres($this);
-        }
-
-        return $this;
-    }
-
-    public function removeOrdersDetail(OrdersDetails $ordersDetail): self
-    {
-        if ($this->ordersDetails->removeElement($ordersDetail)) {
-            // set the owning side to null (unless already changed)
-            if ($ordersDetail->getOffres() === $this) {
-                $ordersDetail->setOffres(null);
-            }
-        }
-
-        return $this;
-    }
+    
+    
 }

@@ -7,21 +7,17 @@
                 <h1>Trouvez les offres des stages</h1>
                 <p>Bienvenue dans notre Platforme</p>            
             </div>
-            {% for category in categories %}
-                {% if category.parent == null %}
-                    <div class="col-12">
-                        <h2>{{ category.name }}</h2>
-                    </div>
-                {% else %}
-                    <div class="col-4">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h3 class="card-title">{{ category.name }}</h3>
-                                <a href="{{ path('categories_list', {slug: category.slug}) }}" class="btn btn-primary">Voir les produits</a>
-                            </div>
+            {% for offre in offres %}
+               
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                        <h5 class="card-title">{{offre.name}}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{offre.ville}}</h6>
+                        <p class="card-text">{{offre.description}}</p>
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
                         </div>
-                    </div>    
-                {% endif %}
+                    </div>  
             {% endfor %}
         </section>
     </main>
