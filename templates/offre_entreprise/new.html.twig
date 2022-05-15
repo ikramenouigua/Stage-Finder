@@ -1,0 +1,53 @@
+
+
+
+
+{% block stylesheets %}
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icon Font Stylesheet -->
+   
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+     <link rel="stylesheet" href="{{ asset('lib/animate/animate.min.css')}}" >
+    <link rel="stylesheet" href="{{ asset("lib/owlcarousel/assets/owl.carousel.min.css")}}" >
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}" >
+
+   
+    <link rel="stylesheet" href="{{ asset('css/style.css')}}" >
+{% endblock stylesheets %}
+
+
+
+{% block body %}
+    <section class="container">
+        <div class="row">
+            <div class="col">
+            <br>
+               <h2>Create new OffreEntreprise</h2>
+
+                {{ form_start(form) }}
+                    <fieldset class="mb-3">
+                       
+                        {{ form_row(form.name) }}
+                        {{ form_row(form.description) }}
+                        {{ form_row(form.duree) }}
+                        {{ form_row(form.remuneration) }}
+                        {{ form_row(form.image) }}
+                        {{ form_row(form.ville) }}
+                    </fieldset>
+
+                   
+
+                    <button type="submit" class="btn btn-primary btn-lg my-3">create</button>
+                   
+                {{ form_end(form) }}            
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

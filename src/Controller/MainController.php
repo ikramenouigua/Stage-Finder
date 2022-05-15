@@ -6,16 +6,25 @@ use App\Repository\OffresRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\ORM\EntityManagerInterface;
+use App\Entity\OffreEntreprise;
+use App\Form\OffreEntreprise1Type;
+use App\Repository\OffreEntrepriseRepository;
 
 class MainController extends AbstractController
 {
 
     #[Route('/', name: 'app_stage_finder')]
-    public function index(OffresRepository $offresRepository): Response
+    public function index(EntityManagerInterface $entityManager): Response
     {
-        return $this->render('index.html.twig', [
-            'offres' => $offresRepository->findBy([], ['id' => 'asc'])
-        ]);
+        $offreEntreprises = $entityManager
+        ->getRepository(OffreEntreprise::class)
+        ->findAll();
+
+    return $this->render('index.html.twig', [
+        'offre_entreprises' => $offreEntreprises,
+    ]);
+        
     }
 
     #[Route('/about', name: 'about')]

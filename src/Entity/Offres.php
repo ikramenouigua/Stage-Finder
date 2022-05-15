@@ -38,8 +38,20 @@ class Offres
     #[ORM\Column(type: 'text')]
     private $ville;
 
-    #[ORM\ManyToOne(targetEntity: Users::class)]
-    private $idE;
+    /**
+     * @var User
+     * @ORM\OneToMany (targetEntity=Entity/User,mappedBy={"offers")
+     */
+    private $user;
+
+  
+    #[ORM\ManyToOne(targetEntity: Users::class, inversedBy: 'postuler')]
+    #[ORM\JoinColumn(name:"id", referencedColumnName:"id")]
+    private $entreprise_id;
+
+   
+
+    
 
 
    
@@ -130,18 +142,27 @@ class Offres
         return $this;
     }
 
-    public function getIdE(): ?user
+    
+
+    public function __toString()
     {
-        return $this->idE;
+        return $this->getId() ;
     }
 
-    public function setIdE(?user $idE): self
+    
+
+    
+    public function getEntrepriseId(): ?Users
     {
-        $this->idE = $idE;
+        return $this->entreprise_id;
+    }
+
+    public function setEntrepriseId(?Users $entreprise_id): self
+    {
+        $this->entreprise_id = $entreprise_id;
 
         return $this;
     }
 
-    
     
 }

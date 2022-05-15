@@ -16,17 +16,21 @@
                     
                     
                         <a href="{{  path('testemonials') }}" class="nav-item nav-link" >Testemonials</a>
+						<a href="{{  path('profile') }}" class="nav-item nav-link" >Profile</a>
+                        	<a href="{{  path('app_logout') }}" class="nav-item nav-link" >se deconnecter</a>
                         
                        
                     
                    
                 </div>
+				{% if app.user %}
 				{% if app.user.category == '0' %}
-                <a href="{{  path('OFFRES_entreprises') }}" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Dashboard<i class="fa fa-arrow-right ms-3"></i></a>
+                <a href="{{  path('app_offre_entreprise_index') }}" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Dashboard<i class="fa fa-arrow-right ms-3"></i></a>
                 {% endif %}
 				{% if app.user.category == '1' %}
                 <a href="" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">check jobs<i class="fa fa-arrow-right ms-3"></i></a>
                 {% endif %}
+			 {% endif %}
 			</div>
         </nav>
         <!-- Navbar End -->

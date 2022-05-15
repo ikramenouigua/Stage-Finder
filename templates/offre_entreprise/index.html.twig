@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}OffreEntreprise index{% endblock %}
+
+{% block body %}
+    <h1>OffreEntreprise index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Duree</th>
+                <th>Remuneration</th>
+                <th>Image</th>
+                <th>Ville</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for offre_entreprise in offre_entreprises %}
+            <tr>
+                <td>{{ offre_entreprise.id }}</td>
+                <td>{{ offre_entreprise.name }}</td>
+                <td>{{ offre_entreprise.description }}</td>
+                <td>{{ offre_entreprise.duree }}</td>
+                <td>{{ offre_entreprise.remuneration }}</td>
+                <td>{{ offre_entreprise.image }}</td>
+                <td>{{ offre_entreprise.ville }}</td>
+                <td>
+                    <a href="{{ path('app_offre_entreprise_show', {'id': offre_entreprise.id}) }}">show</a>
+                    <a href="{{ path('app_offre_entreprise_edit', {'id': offre_entreprise.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_offre_entreprise_new') }}">Create new</a>
+{% endblock %}

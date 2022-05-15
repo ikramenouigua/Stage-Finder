@@ -54,13 +54,17 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean')]
     private $is_verified = false;
 
-    #[ORM\OneToMany(mappedBy: 'users', targetEntity: Orders::class)]
-    private $orders;
+    #[ORM\OneToMany(mappedBy: 'idE', targetEntity: Offres::class)]
+    private $idEU;
+
+
+    
+
 
     public function __construct()
     {
-        $this->orders = new ArrayCollection();
         $this->created_at = new \DateTimeImmutable();
+        $this->idEU = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -221,33 +225,44 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection|Orders[]
-     */
-    public function getOrders(): Collection
+    
+
+
+    public function __toString()
     {
-        return $this->orders;
+        return $this->getId() ;
     }
 
-    public function addOrder(Orders $order): self
+    /**
+     * @return Collection<int, Offres>
+     */
+    public function getIdEU(): Collection
     {
-        if (!$this->orders->contains($order)) {
-            $this->orders[] = $order;
-            $order->setUsers($this);
+        return $this->idEU;
+    }
+
+    public function addIdEU(Offres $idEU): self
+    {
+        if (!$this->idEU->contains($idEU)) {
+            $this->idEU[] = $idEU;
+            $idEU->setIdE($this);
         }
 
         return $this;
     }
 
-    public function removeOrder(Orders $order): self
+    public function removeIdEU(Offres $idEU): self
     {
-        if ($this->orders->removeElement($order)) {
+        if ($this->idEU->removeElement($idEU)) {
             // set the owning side to null (unless already changed)
-            if ($order->getUsers() === $this) {
-                $order->setUsers(null);
+            if ($idEU->getIdE() === $this) {
+                $idEU->setIdE(null);
             }
         }
 
         return $this;
     }
+
+    
+
 }

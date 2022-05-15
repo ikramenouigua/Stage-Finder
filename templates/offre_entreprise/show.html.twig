@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}OffreEntreprise{% endblock %}
+
+{% block body %}
+    <h1>OffreEntreprise</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ offre_entreprise.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ offre_entreprise.name }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ offre_entreprise.description }}</td>
+            </tr>
+            <tr>
+                <th>Duree</th>
+                <td>{{ offre_entreprise.duree }}</td>
+            </tr>
+            <tr>
+                <th>Remuneration</th>
+                <td>{{ offre_entreprise.remuneration }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ offre_entreprise.image }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ offre_entreprise.ville }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_offre_entreprise_index') }}">back to list</a>
+
+    <a href="{{ path('app_offre_entreprise_edit', {'id': offre_entreprise.id}) }}">edit</a>
+
+    {{ include('offre_entreprise/_delete_form.html.twig') }}
+{% endblock %}
