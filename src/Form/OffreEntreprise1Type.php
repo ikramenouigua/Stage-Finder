@@ -16,9 +16,8 @@ class OffreEntreprise1Type extends AbstractType
             ->add('description')
             ->add('duree')
             ->add('remuneration')
-            ->add('image')
+           
             ->add('ville')
-            ->add('id_entreprise')
         ;
     }
 

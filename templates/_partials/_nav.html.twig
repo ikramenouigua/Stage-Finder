@@ -17,8 +17,9 @@
                     
                         <a href="{{  path('testemonials') }}" class="nav-item nav-link" >Testemonials</a>
 						<a href="{{  path('profile') }}" class="nav-item nav-link" >Profile</a>
+                        {% if app.user %}
                         	<a href="{{  path('app_logout') }}" class="nav-item nav-link" >se deconnecter</a>
-                        
+                        {%endif%}
                        
                     
                    

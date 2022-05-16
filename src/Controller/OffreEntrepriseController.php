@@ -33,6 +33,7 @@ class OffreEntrepriseController extends AbstractController
         $form = $this->createForm(OffreEntreprise1Type::class, $offreEntreprise);
         $form->handleRequest($request);
 
+        
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($offreEntreprise);
             $entityManager->flush();
