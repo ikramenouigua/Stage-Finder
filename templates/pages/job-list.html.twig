@@ -62,7 +62,7 @@
         <!-- Jobs Start -->
         <div class="container-xxl py-5">
             <div class="container">
-                <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Job Listing</h1>
+                <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Internships Listing</h1>
                 <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.3s">
                     <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5">
                         <li class="nav-item">
@@ -98,9 +98,9 @@
                                     <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
                                         <div class="d-flex mb-3">
                                             <a class="btn btn-light btn-square me-3" href=""><i class="far fa-heart text-primary"></i></a>
-                                            <a class="btn btn-primary" href="">Apply Now</a>
+                                            <a class="btn btn-primary" href="{{ path('postuler', {'id': offre.id})}}">Apply Now</a>
                                         </div>
-                                        <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date Line: 01 Jan, 2045</small>
+                                       
                                     </div>
                                 </div>
                             </div>
@@ -108,7 +108,7 @@
                         
                            
                             
-                            <a class="btn btn-primary py-3 px-5" href="">Browse More Jobs</a>
+                           
                         </div>
                         <div id="tab-2" class="tab-pane fade show p-0">
                             <div class="job-item p-4 mb-4">

@@ -45,10 +45,14 @@ class MainController extends AbstractController
     
 
     #[Route('/stages', name: 'stages')]
-    public function stages(OffresRepository $offresRepository): Response
+    public function stages(EntityManagerInterface $entityManager): Response
     {
+        $offres = $entityManager
+        ->getRepository(OffreEntreprise::class)
+        ->findAll();
+
         return $this->render('pages/job-list.html.twig', [
-            'offres' => $offresRepository->findBy([], ['id' => 'asc'])
+            'offres' => $offres,
         ]);
     }
 }
